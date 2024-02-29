@@ -1,0 +1,6 @@
+dash==2.7.1
+pandas
+scikit_learn
+plotly
+fastparquet
+gunicorn
