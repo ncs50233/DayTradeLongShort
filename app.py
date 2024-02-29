@@ -12,7 +12,7 @@ modelScoreFilepath = ['data/模型指標五爪圖_0_10.parquet',
                       'data/模型指標五爪圖_60_70.parquet',
                       'data/模型指標五爪圖_70_80.parquet',
                       'data/模型指標五爪圖_80_90.parquet',
-                      'data/模型指標五爪圖_90_100.parquet',
+                      'data/模型指標五爪圖_90_100.parquet']
 
 model_score = pd.concat(pd.read_parquet(f) for f in modelScoreFilepath).sort_values(['trading_datetime', 'group']).reset_index(drop = True)
 feature_importance = pd.read_parquet('data/特徵重要度.parquet')
