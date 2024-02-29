@@ -3,7 +3,18 @@ import plotly.express as px
 import pandas as pd
 
 # 實單交易資料處理
-model_score = pd.read_parquet('data/模型指標五爪圖.parquet')
+modelScoreFilepath = ['data/模型指標五爪圖_0_10.parquet',
+                      'data/模型指標五爪圖_10_20.parquet',
+                      'data/模型指標五爪圖_20_30.parquet',
+                      'data/模型指標五爪圖_30_40.parquet',
+                      'data/模型指標五爪圖_40_50.parquet',
+                      'data/模型指標五爪圖_50_60.parquet',
+                      'data/模型指標五爪圖_60_70.parquet',
+                      'data/模型指標五爪圖_70_80.parquet',
+                      'data/模型指標五爪圖_80_90.parquet',
+                      'data/模型指標五爪圖_90_100.parquet',
+
+model_score = pd.concat(pd.read_parquet(f) for f in modelScoreFilepath).sort_values(['trading_datetime', 'group']).reset_index(drop = True)
 feature_importance = pd.read_parquet('data/特徵重要度.parquet')
 backtest_data = pd.read_parquet('data/投組回測資料.parquet')
 equity = pd.read_parquet('data/實單.parquet')
